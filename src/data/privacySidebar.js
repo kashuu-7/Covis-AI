@@ -1,0 +1,18 @@
+export const privacySidebarLinks = [
+  { title: "Who We Are", href: "#who-we-are" },
+  { title: "Scope", href: "#scope" },
+  { title: "Data We Collect", href: "#data-we-collect" },
+  { title: "How We Collect", href: "#how-we-collect" },
+  { title: "Legal Basis (GDPR)", href: "#legal-basis" },
+  { title: "How We Use Your Data", href: "#how-we-use" },
+  { title: "Data Sharing", href: "#data-sharing" },
+  { title: "AI Data Processing", href: "#ai-data-processing" },
+  { title: "International Transfers", href: "#international-transfers" },
+  { title: "Cookies & Tracking", href: "#cookies-tracking" },
+  { title: "Your Rights", href: "#your-rights" },
+  { title: "Data Security", href: "#data-security" },
+  { title: "Children's Privacy", href: "#childrens-privacy" },
+  { title: "Data Retention", href: "#data-retention" },
+  { title: "Changes", href: "#changes" },
+  { title: "Contact", href: "#contact" },
+];

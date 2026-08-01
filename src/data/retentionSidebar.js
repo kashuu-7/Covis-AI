@@ -1,0 +1,16 @@
+export const retentionSidebarLinks = [
+  { title: "Overview", href: "#overview" },
+  { title: "Account & Identify Data", href: "#account-identity" },
+  { title: "Billing & Fimamcial Data", href: "#billing-financial" },
+  { title: "Content & AI Data", href: "#content-ai" },
+  { title: "Usage & Analytics", href: "#usage-analytics" },
+  { title: "Security & Audit Data", href: "#security-audit" },
+  { title: "Communication Data", href: "#communication" },
+  { title: "Tenant-Configurable Settings", href: "#configurable" },
+  { title: "Deletion Tiers", href: "#deletion-tiers" },
+  { title: "Legal Hold Policy", href: "#legal-hold" },
+  { title: "Automated Deletion Jobs", href: "#automated-jobs" },
+  { title: "Key Timeframes Summary", href: "#summary" },
+  { title: "Changes", href: "#changes" },
+  { title: "Contact", href: "#contact" },
+];
