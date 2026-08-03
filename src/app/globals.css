@@ -3,6 +3,11 @@ html {
   scroll-behavior: smooth;
 }
 
+@theme {
+  --color-brand-primary: #8500db;
+  --color-brand-secondary: #c500db;
+}
+
 @keyframes slide {
   0% {
     transform: translateX(-25%);
@@ -145,3 +150,4 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #a300ff transparent;
 }
+

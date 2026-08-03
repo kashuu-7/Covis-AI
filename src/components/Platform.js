@@ -243,7 +243,7 @@ export default function Platform() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
             <Link
-              href="/"
+              href="/discover"
               className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-linear-to-r from-purple-600 via-fuchsia-600 to-purple-600 rounded-2xl text-white font-bold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
             >
               <div className="absolute inset-0 bg-linear-to-r from-purple-400 via-fuchsia-400 to-purple-400 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>

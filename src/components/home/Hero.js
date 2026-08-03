@@ -80,14 +80,14 @@ export default function Hero() {
             </p>
           </div>
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/">
+            <Link href="/pricing">
               <div className="group/button relative">
                 <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-brand-gradient hover:opacity-90 hover:shadow-[0_0_30px_rgba(133,0,219,0.6)] h-10 rounded-md has-[>svg]:px-4 bg-linear-to-r from-purple-500 to-fuchsia-500 text-white font-bold hover:from-purple-400 hover:to-fuchsia-400 px-10 py-6 text-lg shadow-2xl shadow-purple-500/40 hover:shadow-purple-500/60 hover:scale-105 transition-all duration-300">
                   View Pricing
                 </button>
               </div>
             </Link>
-            <Link href="/">
+            <Link href="/signup">
               <div className="group/button relative">
                 <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md has-[>svg]:px-4 border-2 border-white/40 bg-white/10 text-white font-bold hover:bg-white/20 px-10 py-6 text-lg backdrop-blur-sm transition-all duration-300">
                   Sign Up Now
