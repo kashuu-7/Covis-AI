@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 import React from "react";
 import Navbar from "../home/Navbar";
 import {
@@ -12,16 +16,62 @@ import {
   FileText,
   Calendar,
   ChartColumn,
-  Brain, 
+  Brain,
   Zap,
+  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
 
 export default function DiscoverHero() {
+  const [activeSection, setActiveSection] = useState("intro");
+  useEffect(() => {
+  const sections = document.querySelectorAll("section[id]");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    },
+    {
+      rootMargin: "-45% 0px -45% 0px",
+      threshold: 0,
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+
+  return () => observer.disconnect();
+}, []);
+
+  const navItems = [
+    {
+      id: "intro",
+      label: "Intro",
+    },
+    {
+      id: "problem",
+      label: "Problem",
+    },
+    {
+      id: "solution",
+      label: "Solution",
+    },
+    {
+      id: "cta",
+      label: "CTA",
+    },
+  ];
+
   return (
     <>
       {/* // Hero section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 py-24 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+      <section
+        id="intro"
+        className="relative min-h-screen flex items-center justify-center px-6 py-24 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950"
+      >
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-3xl animate-pulse [animation-delay:1s] " />
@@ -78,7 +128,10 @@ export default function DiscoverHero() {
           </p>
         </div>
       </section>
-      <section className="relative py-32 px-6 bg-white overflow-hidden">
+      <section
+        id="problem"
+        className="relative py-32 px-6 bg-white overflow-hidden"
+      >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl animate-pulse [animation-delay:1.5s] " />
@@ -188,7 +241,10 @@ export default function DiscoverHero() {
           </div>
         </div>
       </section>
-      <section className="relative py-32 px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 overflow-hidden">
+      <section
+        id="solution"
+        className="relative py-32 px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 overflow-hidden"
+      >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-3xl animate-pulse [animation-delay:1s ]" />
@@ -373,7 +429,10 @@ export default function DiscoverHero() {
           </div>
         </div>
       </section>
-      <section className="relative py-32 px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+      <section
+        id="cta"
+        className="relative py-32 px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950"
+      >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-3xl animate-pulse [animation-delay:1s] " />
@@ -397,21 +456,7 @@ export default function DiscoverHero() {
                 >
                   <Zap className="w-5 h-5" />
                   <span>View Pricing</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    className="lucide lucide-chevron-right w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                    aria-hidden="true"
-                  >
-                    <path d="m9 18 6-6-6-6"></path>
-                  </svg>
+                  <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
                 <Link
                   className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl text-white font-semibold text-lg border-2 border-purple-500/30 hover:border-purple-500/60 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500/10"
@@ -424,6 +469,39 @@ export default function DiscoverHero() {
           </div>
         </div>
       </section>
+      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => {
+              document.getElementById(item.id)?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+            className={`group relative flex items-center gap-3 transition-all duration-300 ${
+              activeSection === item.id ? "scale-110" : ""
+            }`}
+          >
+            <div
+              className={`rounded-full transition-all duration-300 ${
+                activeSection === item.id
+                  ? "w-3 h-3 bg-gradient-to-r from-purple-500 to-fuchsia-500"
+                  : "w-2 h-2 bg-gray-600  group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-fuchsia-500"
+              }`}
+            />
+
+            <span
+              className={`absolute left-6 whitespace-nowrap text-xs font-medium transition-all duration-300 ${
+                activeSection === item.id
+                  ? "text-purple-400 opacity-100"
+                  : "text-gray-500 opacity-0 group-hover:opacity-100"
+              }`}
+            >
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
     </>
   );
 }
