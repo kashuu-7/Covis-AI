@@ -25,7 +25,7 @@ export default function StepTwo({
 );
 
   return (
-    <div className="stepper-form-shell flex-shrink-0 rounded-2xl border border-gray-200/60 bg-white p-8 shadow-[0_0_40px_rgba(133,0,219,0.1)]">
+    <div className="stepper-form-shell flex-shrink-0 rounded-2xl border border-gray-200/60 bg-white p-3 shadow-[0_0_40px_rgba(133,0,219,0.1)] sm:p-6 md:p-8">
       <form
           className="flex h-full flex-col"
           onSubmit={(e) => e.preventDefault()}
@@ -65,7 +65,7 @@ export default function StepTwo({
                         maxLength="150"
                         id="company_name"
                         name="company_name"
-                        className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-[#c500db] focus-visible:ring-[3px] focus-visible:ring-[#c500db]/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive pr-16"
+                        className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 h-9 min-w-0 bg-transparent px-3 py-1 text-base outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-input w-full rounded-md border shadow-xs transition-[color,box-shadow] focus-visible:border-[#c500db] focus-visible:ring-[3px] focus-visible:ring-[#c500db]/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive pr-16"
                       />
                       <span className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-xs text-gray-400">
                         {formData.companyName?.length || 0}/150

@@ -13,7 +13,7 @@ export default function StepOne({
   nextStep,
 }) {
   return (
-    <div className="stepper-form-shell flex-shrink-0 rounded-2xl border border-gray-200/60 bg-white p-8 shadow-[0_0_40px_rgba(133,0,219,0.1)]">
+    <div className="stepper-form-shell flex-shrink-0 rounded-2xl border border-gray-200/60 bg-white p-3 shadow-[0_0_40px_rgba(133,0,219,0.1)] sm:p-6 md:p-8">
       <form
         className="flex h-full flex-col"
         onSubmit={(e) => e.preventDefault()}
@@ -40,7 +40,7 @@ export default function StepOne({
                       accountType: "company",
                     }));
                   }}
-                  className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl border-2 p-5 text-left transition-all duration-300 sm:p-6
+                  className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl border-2 p-4 text-left transition-all duration-300 sm:p-6
                     ${
                       formData.accountType === "company"
                         ? "border-[#8500db] bg-[#8500db]/5 shadow-[0_0_25px_rgba(133,0,219,0.15)]"
@@ -50,22 +50,22 @@ export default function StepOne({
                 >
                   <span className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br from-[#8500db]/15 to-[#c500db]/10 blur-2xl transition-opacity duration-300 opacity-0 group-hover:opacity-60" />
                   <span className="relative block">
-                    <span className="flex items-center gap-4">
+                    <span className="flex items-start gap-3 sm:items-center sm:gap-4">
                       <span
-                        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-all duration-300
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-all duration-300 sm:h-14 sm:w-14 sm:rounded-2xl 
                         ${
                           formData.accountType === "company"
                             ? "bg-gradient-to-br from-[#8500db] to-[#c500db] text-white shadow-[0_6px_16px_rgba(133,0,219,0.35)]"
                             : "bg-gray-100 text-gray-500 group-hover:bg-[#8500db]/10 group-hover:text-[#8500db]"
                         }`}
                       >
-                        <Building2 className="h-7 w-7" />
+                        <Building2 className="h-5 w-5 sm:h-7 sm:w-7" />
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="flex items-center justify-between gap-3">
+                        <span className="flex items-start justify-between gap-2 sm:items-center sm:gap-3">
                           <span className="min-w-0">
                             <span
-                              className={`block text-lg font-bold transition-colors ${
+                              className={`block text-base leading-snug font-bold transition-colors sm:text-lg  ${
                                 formData.accountType === "company"
                                   ? "text-[#8500db]"
                                   : "text-gray-900"
@@ -73,12 +73,12 @@ export default function StepOne({
                             >
                               Company
                             </span>
-                            <span className="mt-0.5 block text-sm font-medium text-gray-500">
-                              For businesses, agencies &amp; teams
+                            <span className="mt-0.5 block text-xs leading-snug font-medium text-gray-500 sm:text-sm">
+                              For businesses, agencies & teams
                             </span>
                           </span>
                           <span
-                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-200
+                            className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-200 sm:mt-0 sm:h-6 sm:w-6 
                                 ${
                                   formData.accountType === "company"
                                     ? "border-[#8500db] bg-[#8500db]"
@@ -87,7 +87,7 @@ export default function StepOne({
                             `}
                           >
                             {formData.accountType === "company" && (
-                              <Check className="w-3.5 h-3.5 text-white" />
+                              <Check className="h-3 w-3 text-white sm:h-3.5 sm:w-3.5" />
                             )}
                           </span>
                         </span>
@@ -172,7 +172,7 @@ export default function StepOne({
                       accountType: "individual",
                     }));
                   }}
-                  className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl border-2 p-5 text-left transition-all duration-300 sm:p-6
+                  className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl border-2 p-4 text-left transition-all duration-300 sm:p-6
                         ${
                           formData.accountType === "individual"
                             ? "border-[#8500db] bg-[#8500db]/5 shadow-[0_0_25px_rgba(133,0,219,0.15)]"
@@ -182,22 +182,22 @@ export default function StepOne({
                 >
                   <span className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br from-[#8500db]/15 to-[#c500db]/10 blur-2xl transition-opacity duration-300 opacity-0 group-hover:opacity-60" />
                   <span className="relative block">
-                    <span className="flex items-center gap-4">
+                    <span className="flex items-start gap-3 sm:items-center sm:gap-4">
                       <span
-                        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-all duration-300
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-all duration-300 sm:h-14 sm:w-14 sm:rounded-2xl
                         ${
                           formData.accountType === "individual"
                             ? "bg-gradient-to-br from-[#8500db] to-[#c500db] text-white shadow-[0_6px_16px_rgba(133,0,219,0.35)]"
                             : "bg-gray-100 text-gray-500 group-hover:bg-[#8500db]/10 group-hover:text-[#8500db]"
                         }`}
                       >
-                        <CircleUser className="h-7 w-7" />
+                        <CircleUser className="h-5 w-5 sm:h-7 sm:w-7" />
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="flex items-center justify-between gap-3">
+                        <span className="flex items-start justify-between gap-2 sm:items-center sm:gap-3">
                           <span className="min-w-0">
                             <span
-                              className={`block text-lg font-bold transition-colors ${
+                              className={`block text-base leading-snug font-bold transition-colors sm:text-lg ${
                                 formData.accountType === "individual"
                                   ? "text-[#8500db]"
                                   : "text-gray-900"
@@ -205,12 +205,12 @@ export default function StepOne({
                             >
                               Individual Freelancer
                             </span>
-                            <span className="mt-0.5 block text-sm font-medium text-gray-500">
-                              For independent professionals working solo
+                            <span className="mt-0.5 block text-xs leading-snug font-medium text-gray-500 sm:text-sm">
+                              For solo professionals
                             </span>
                           </span>
                           <span
-                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-200
+                            className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-200 sm:mt-0 sm:h-6 sm:w-6
                                 ${
                                   formData.accountType === "individual"
                                     ? "border-[#8500db] bg-[#8500db]"
@@ -219,7 +219,7 @@ export default function StepOne({
                             `}
                           >
                             {formData.accountType === "individual" && (
-                              <Check className="w-3.5 h-3.5 text-white" />
+                              <Check className="h-3 w-3 text-white sm:h-3.5 sm:w-3.5" />
                             )}
                           </span>
                         </span>
@@ -319,7 +319,7 @@ export default function StepOne({
 
                     nextStep();
                   }}
-                  className={`inline-flex items-center justify-center gap-2 rounded-md h-9 px-4 py-2 transition-all duration-300
+                  className={`inline-flex items-center justify-center gap-2 rounded-md h-9 sm:px-4 py-2 px-3 transition-all duration-300
                         ${
                           formData.accountType
                             ? "bg-brand-gradient text-white hover:scale-105 shadow-lg"

@@ -12,7 +12,7 @@ import {
 
 export default function StepThree({ prevStep, formData, setFormData }) {
   const billing = formData.billing;
-const selectedPlan = formData.subscription;
+  const selectedPlan = formData.subscription;
 
   const handleSubmit = async () => {
     if (!selectedPlan) return;
@@ -29,21 +29,6 @@ const selectedPlan = formData.subscription;
     console.log(finalData);
 
     try {
-      // yahan API call hogi
-
-      /*
-    const res = await fetch("YOUR_API_URL", {
-      method: "POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify(finalData)
-    });
-
-    const data = await res.json();
-    console.log(data);
-    */
-
       alert("Registration Completed 🎉");
     } catch (err) {
       console.log(err);
@@ -96,11 +81,11 @@ const selectedPlan = formData.subscription;
   ];
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-[0_0_40px_rgba(133,0,219,0.1)]">
+    <div className="stepper-form-shell flex-shrink-0 rounded-2xl border border-gray-200/60 bg-white p-3 shadow-[0_0_40px_rgba(133,0,219,0.1)] sm:p-6 md:p-8">
       {/* Heading */}
 
       <div className="mb-8">
-        <h2 className="flex items-center gap-2 text-2xl font-bold">
+        <h2 className="mb-1 flex items-center gap-2 text-xl font-bold text-gray-900">
           <CreditCard className="text-[#8500db]" />
           Subscription Plan
         </h2>
@@ -115,12 +100,12 @@ const selectedPlan = formData.subscription;
       <div className="mb-10 flex justify-center">
         <div className="flex rounded-xl bg-gray-100 p-1">
           <button
-                            onClick={() =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    billing: "monthly",
-                  }))
-                }
+            onClick={() =>
+              setFormData((prev) => ({
+                ...prev,
+                billing: "monthly",
+              }))
+            }
             className={`rounded-lg px-6 py-2 text-sm font-semibold transition
             ${
               billing === "monthly"
@@ -133,11 +118,11 @@ const selectedPlan = formData.subscription;
 
           <button
             onClick={() =>
-                setFormData((prev) => ({
-                  ...prev,
-                  billing: "yearly",
-                }))
-              }
+              setFormData((prev) => ({
+                ...prev,
+                billing: "yearly",
+              }))
+            }
             className={`relative rounded-lg px-6 py-2 text-sm font-semibold transition
             ${
               billing === "yearly"
@@ -162,11 +147,11 @@ const selectedPlan = formData.subscription;
           <div
             key={plan.id}
             onClick={() =>
-                setFormData((prev) => ({
-                  ...prev,
-                  subscription: plan.id,
-                }))
-              }
+              setFormData((prev) => ({
+                ...prev,
+                subscription: plan.id,
+              }))
+            }
             className={`relative cursor-pointer rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
       ${
         selectedPlan === plan.id
@@ -182,50 +167,56 @@ const selectedPlan = formData.subscription;
               </span>
             )}
 
-            {/* Icon */}
+            {/* Plan Header */}
 
-            <div
-              className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl
-        ${
-          selectedPlan === plan.id
-            ? "bg-gradient-to-r from-[#8500db] to-[#c500db] text-white"
-            : "bg-gray-100 text-gray-500"
-        }`}
-            >
-              {plan.icon}
-            </div>
+            <div className="flex items-center gap-4">
+              {/* Icon */}
 
-            {/* Title */}
+              <div
+                className={`flex sm:p-4 p-3 shrink-0 items-center justify-center rounded-2xl
+    ${
+      selectedPlan === plan.id
+        ? "bg-gradient-to-r from-[#8500db] to-[#c500db] text-white"
+        : "bg-gray-100 text-gray-500"
+    }`}
+              >
+                {plan.icon}
+              </div>
 
-            <h3 className="text-xl font-bold">{plan.title}</h3>
+              {/* Title + Price */}
 
-            {/* Price */}
+              <div className="min-w-0 flex-1 flex flex-col justify-between">
+                {/* Title */}
 
-            {!plan.enterprise ? (
-              <div className="mt-4">
-                <span className="text-4xl font-extrabold">
-                  ${billing === "monthly" ? plan.monthly : plan.yearly}
-                </span>
+                <h3 className="sm:text-xl text-l font-bold">{plan.title}</h3>
 
-                <span className="ml-1 text-gray-500">
-                  /month
-                </span>
+                {/* Price */}
 
-                {billing === "yearly" && (
-                  <p className="mt-1 text-sm font-medium text-green-600">
-                    Billed yearly
-                  </p>
+                {!plan.enterprise ? (
+                  <div className="">
+                    <span className="sm:text-4xl text-2xl  font-extrabold">
+                      ${billing === "monthly" ? plan.monthly : plan.yearly}
+                    </span>
+
+                    <span className="ml-1 text-gray-500">/month</span>
+
+                    {billing === "yearly" && (
+                      <p className="mt-1 text-sm font-medium text-green-600">
+                        Billed yearly
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <div className="">
+                    <span className="sm:text-3xl text-xl font-bold">Contact Sales</span>
+
+                    <p className="mt-1 text-sm text-gray-500">
+                      Best for large organizations
+                    </p>
+                  </div>
                 )}
               </div>
-            ) : (
-              <div className="mt-4">
-                <span className="text-3xl font-bold">Contact Sales</span>
-
-                <p className="mt-2 text-sm text-gray-500">
-                  Best for large organizations
-                </p>
-              </div>
-            )}
+            </div>
 
             {/* Divider */}
 

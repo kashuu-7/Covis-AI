@@ -36,17 +36,17 @@ export default function SignForm() {
   });
 
   return (
-    <div className="scrollbar-none relative flex h-screen min-h-0 w-full shrink-0 justify-center overflow-x-hidden overflow-y-auto bg-gradient-to-br from-white via-gray-50 to-purple-50 p-6 transition-[grid-column] duration-500 ease-in-out lg:min-w-0 lg:overflow-x-hidden">
+    <div className="scrollbar-none relative flex h-screen min-h-0 w-full shrink-0 justify-center overflow-x-hidden overflow-y-auto bg-gradient-to-br from-white via-gray-50 to-purple-50 transition-[grid-column] duration-500 ease-in-out p-3 sm:p-6 lg:min-w-0 lg:overflow-x-hidden">
       <div className="my-auto w-full shrink-0 max-w-lg">
         <div>
           <button className="absolute top-4 right-4 z-10 inline-flex cursor-pointer items-center gap-1.5 border-none bg-transparent text-sm font-semibold text-purple-600 transition-colors outline-none hover:text-purple-800">
             <span className="underline underline-offset-4">Need Help</span>
             <CircleQuestionMark className="w-4 h-4 shrink-0" />
           </button>
-          <div className="my-4 flex w-full max-w-2xl flex-col py-4">
-            <div className="mb-6 flex-shrink-0 text-center">
-              <h1 className="mb-2 text-3xl font-bold text-[#c500db]">
-                Sign up
+          <div className="my-2 flex w-full max-w-2xl flex-col py-2 sm:my-4 sm:py-4">
+            <div className="mb-4 flex-shrink-0 sm:mb-6 text-center">
+              <h1 className="mb-2 text-2xl font-bold text-[#c500db] sm:text-3xl">
+                Sign Up
               </h1>
               <p className="text-sm text-gray-600">
                 Choose your account type, create your account, and complete your
