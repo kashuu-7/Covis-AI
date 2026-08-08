@@ -4,8 +4,7 @@ import Workflow from "../components/Workflow";
 import Productivity from "../components/Productivity";
 import Platform from "../components/Platform";
 import ContactUs from "../components/contact/ContactUs";
-import Footer from "../components/home/Footer";
-import Robot from "../components/Robot";
+import ChatWidget from "../components/ChatWidget";
 
 export default function Home() {
   return (
@@ -20,7 +19,7 @@ export default function Home() {
     <Platform/>
     <ContactUs/>
   </main>
-    <Robot/>
+    <ChatWidget/> 
   </div>
     </>
   );

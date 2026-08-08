@@ -1,5 +1,6 @@
 import "./globals.css";
 import LayoutWrapper from "../components/LayoutWrapper";
+import "react-phone-input-2/lib/style.css";
 
 export const metadata = {
   title: "Convis AI - AI-powered conversational assistant",
