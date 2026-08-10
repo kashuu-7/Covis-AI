@@ -20,6 +20,44 @@ export default function RobotBox({ onClose, isSignup = false }) {
   const [voiceMode, setVoiceMode] = useState(false);
 
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
+
+  // send message
+  const sendMessage = (text = message) => {
+    if (!text.trim()) return;
+
+    const userText = text.trim();
+
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const userMessage = {
+      id: Date.now(),
+      role: "user",
+      text: userText,
+      time: currentTime,
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setMessage("");
+
+    // Temporary frontend reply
+    setTimeout(() => {
+      const botMessage = {
+        id: Date.now() + 1,
+        role: "assistant",
+        text: "Thanks for your message! I'm currently in demo mode. Once the backend is connected, I'll be able to answer you properly.",
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+    }, 700);
+  };
 
   // speaker
   const speakMessage = (text) => {
@@ -184,6 +222,8 @@ export default function RobotBox({ onClose, isSignup = false }) {
             setVoiceMode={setVoiceMode}
             message={message}
             setMessage={setMessage}
+            messages={messages}
+            sendMessage={sendMessage}
           />
         )}
       </div>

@@ -33,60 +33,60 @@ export default function VoiceView({
 
   // Speech Recognition Setup Effect
   useEffect(() => {
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  if (!SpeechRecognition) return;
+    if (!SpeechRecognition) return;
 
-  const recognition = new SpeechRecognition();
+    const recognition = new SpeechRecognition();
 
-  recognition.continuous = true;
-  recognition.interimResults = true;
-  recognition.lang = "en-US";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
 
-  recognition.onstart = () => {
-    setIsListening(true);
-  };
+    recognition.onstart = () => {
+      setIsListening(true);
+    };
 
-  recognition.onresult = (event) => {
-    let currentTranscript = "";
+    recognition.onresult = (event) => {
+      let currentTranscript = "";
 
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-      currentTranscript += event.results[i][0].transcript;
-    }
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        currentTranscript += event.results[i][0].transcript;
+      }
 
-    setTranscript((prev) => {
-      const updatedTranscript = prev + currentTranscript;
+      setTranscript((prev) => {
+        const updatedTranscript = prev + currentTranscript;
 
-      transcriptRef.current = updatedTranscript;
+        transcriptRef.current = updatedTranscript;
 
-      return updatedTranscript;
-    });
-  };
+        return updatedTranscript;
+      });
+    };
 
-  recognition.onend = () => {
-    setIsListening(false);
+    recognition.onend = () => {
+      setIsListening(false);
 
-    const finalText = transcriptRef.current.trim();
+      const finalText = transcriptRef.current.trim();
 
-    if (finalText) {
-      setMessage(finalText);
-    }
-    // agr voice stop krny se khudi chatbox open ho 
-    // setVoiceMode(false);
-  };
+      if (finalText) {
+        setMessage(finalText);
+      }
+      // agr voice stop krny se khudi chatbox open ho
+      // setVoiceMode(false);
+    };
 
-  recognition.onerror = (event) => {
-    console.log("Speech recognition error:", event.error);
-    setIsListening(false);
-  };
+    recognition.onerror = (event) => {
+      console.log("Speech recognition error:", event.error);
+      setIsListening(false);
+    };
 
-  recognitionRef.current = recognition;
+    recognitionRef.current = recognition;
 
-  return () => {
-    recognition.stop();
-  };
-}, [setMessage]);
+    return () => {
+      recognition.stop();
+    };
+  }, [setMessage]);
 
   const toggleListening = () => {
     if (!recognitionRef.current) {
@@ -126,30 +126,30 @@ export default function VoiceView({
 
       <div className="relative mt-12">
         <div
-  className={`absolute inset-0 animate-ping rounded-full opacity-20 transition-colors duration-300 ${
-    isListening ? "bg-red-500" : "bg-purple-600"
-  }`}
-/>
+          className={`absolute inset-0 animate-ping rounded-full opacity-20 transition-colors duration-300 ${
+            isListening ? "bg-red-500" : "bg-purple-600"
+          }`}
+        />
 
         <button
-  onClick={toggleListening}
-  className={`relative flex h-28 w-28 items-center justify-center rounded-full shadow-[0_0_40px_rgba(133,0,219,.5)] transition-all duration-300 ${
-    isListening
-      ? "bg-gradient-to-r from-red-500 to-red-600 shadow-[0_0_40px_rgba(239,68,68,.5)]"
-      : "bg-gradient-to-r from-[#8500db] to-[#c500db]"
-  }`}
->
+          onClick={toggleListening}
+          className={`relative flex h-28 w-28 items-center justify-center rounded-full shadow-[0_0_40px_rgba(133,0,219,.5)] transition-all duration-300 ${
+            isListening
+              ? "bg-gradient-to-r from-red-500 to-red-600 shadow-[0_0_40px_rgba(239,68,68,.5)]"
+              : "bg-gradient-to-r from-[#8500db] to-[#c500db]"
+          }`}
+        >
           <span
-  className={`absolute h-28 w-28 rounded-full border animate-ping ${
-    isListening ? "border-red-300/40" : "border-white/20"
-  }`}
-/>
+            className={`absolute h-28 w-28 rounded-full border animate-ping ${
+              isListening ? "border-red-300/40" : "border-white/20"
+            }`}
+          />
 
-<span
-  className={`absolute h-24 w-24 rounded-full border animate-pulse ${
-    isListening ? "border-red-300/40" : "border-white/20"
-  }`}
-/>
+          <span
+            className={`absolute h-24 w-24 rounded-full border animate-pulse ${
+              isListening ? "border-red-300/40" : "border-white/20"
+            }`}
+          />
           <Mic className="h-12 w-12 text-white" />
         </button>
       </div>
