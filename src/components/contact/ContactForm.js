@@ -7,10 +7,21 @@ export default function ContactForm() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [preview, setPreview] = useState("");
 
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
     if (!file) return;
+
+    if (file.size > 20 * 1024 * 1024) {
+      alert("File size must be less than 20MB.");
+      return;
+    }
 
     setSelectedFile(file);
 
@@ -31,6 +42,19 @@ export default function ContactForm() {
     }
   };
 
+  const handleSubmit = (e) => {
+  e.preventDefault();
+
+  console.log({
+    fullName,
+    email,
+    phone,
+    company,
+    message,
+    selectedFile,
+  });
+};
+
   return (
     <div className="p-8 md:p-12">
       <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
@@ -39,7 +63,7 @@ export default function ContactForm() {
         </div>
         Send us a message
       </h3>
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="group">
           <label
             htmlFor="name"
@@ -48,6 +72,8 @@ export default function ContactForm() {
             Full Name
           </label>
           <input
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             id="name"
             name="name"
             type="text"
@@ -65,6 +91,8 @@ export default function ContactForm() {
             Email Address
           </label>
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             id="email"
             name="email"
             type="email"
@@ -82,11 +110,13 @@ export default function ContactForm() {
             Phone Number
           </label>
           <input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             id="phoneNumber"
             name="phoneNumber"
             type="tel"
             required
-            maxLength={200}
+            maxLength={20}
             placeholder="+1 (555) 000-0000"
             className="w-full px-4 py-3 bg-gray-50 border-2 rounded-xl text-gray-900 placeholder-gray-400 outline-none focus:bg-white transition-all duration-300 border-gray-200 focus:border-purple-500"
           />
@@ -99,6 +129,8 @@ export default function ContactForm() {
             Company
           </label>
           <input
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
             id="company"
             name="company"
             type="text"
@@ -116,6 +148,8 @@ export default function ContactForm() {
             Message
           </label>
           <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             id="message"
             name="message"
             rows={5}
@@ -126,7 +160,9 @@ export default function ContactForm() {
           />
           <div className="mt-1.5 flex items-start justify-between gap-2">
             <span></span>
-            <span className="shrink-0 text-xs text-gray-400">0/1500</span>
+            <span className="shrink-0 text-xs text-gray-400">
+              {message.length}/1500
+            </span>
           </div>
         </div>
         <div className="group">
